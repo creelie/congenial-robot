@@ -1,0 +1,11 @@
+build/
+lean/.lake/
+preprint/*.aux
+preprint/*.log
+preprint/*.out
+preprint/*.pdf
+preprint/figures/*.pdf
+preprint/figures/*.aux
+preprint/figures/*.log
+__pycache__/
+preprint/pg-*.png
