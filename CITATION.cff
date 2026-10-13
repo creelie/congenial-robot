@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Maximal sublattices of convex geometries: four counterexamples"
+type: software
+authors:
+  - family-names: Bhattacharjee
+    given-names: Deep
+    orcid: "https://orcid.org/0000-0003-0466-750X"
+    affiliation: "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
+    email: d.bhattacharjee@erl-forschung.de
+version: 1.0.0
+date-released: 2026-10-13
+license: MIT
+repository-code: "https://github.com/creelie/congenial-robot"
+keywords:
+  - maximal sublattice
+  - convex geometry
+  - join-semidistributive lattice
+  - convex dimension
+  - Lean 4
+abstract: >-
+  Adaricheva, Mata, Silberger and Zamojska-Dzienio conjectured that in a finite convex geometry,
+  and more generally in a finite join-semidistributive lattice, the complement of a maximal
+  sublattice is a union of intervals with a common least element, and proved this for convex
+  dimension two. Convex geometries of convex dimension four and three are given in which such a
+  complement has two and three minimal elements; the examples also refute their Hypothesis 4 and
+  both halves of their Question 2, and a ten-element lattice refutes their Hypothesis 3. The proofs
+  are formalised in Lean 4 with Mathlib.
+references:
+  - type: article
+    title: "Conjecture on maximal sublattices of finite semidistributive lattices and beyond"
+    authors:
+      - family-names: Adaricheva
+        given-names: Kira
+      - family-names: Mata
+        given-names: Adam
+      - family-names: Silberger
+        given-names: Sylvia
+      - family-names: Zamojska-Dzienio
+        given-names: Anna
+    year: 2026
+    journal: "Discrete Mathematics & Theoretical Computer Science"
+    doi: "10.46298/dmtcs.16374"

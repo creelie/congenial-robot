@@ -1,0 +1,32 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{amsmath,amssymb}
+\definecolor{inM}{RGB}{31,94,165}\definecolor{inC}{RGB}{214,96,33}
+\tikzset{
+  m/.style={circle,inner sep=0pt,minimum size=9pt,ball color=inM!85,draw=inM!60!black,line width=0.3pt},
+  c/.style={circle,inner sep=0pt,minimum size=9pt,ball color=inC!90,draw=inC!60!black,line width=0.3pt},
+  lab/.style={font=\small,fill=white,fill opacity=0.85,text opacity=1,inner sep=1.2pt,rounded corners=1pt},
+  e/.style={line width=0.75pt,black!55},
+  ec/.style={line width=1.5pt,inC!80!black}}
+\begin{document}
+\begin{tikzpicture}[x=1.45cm,y=1.35cm]
+\fill[black!4,rounded corners=10pt] (-3.55,-0.45) rectangle (3.55,5.45);
+\node[m] (0) at (0,0) {};
+\node[m] (b) at (-3,1) {}; \node[c] (d) at (-1.5,1) {}; \node[m] (e) at (0,1) {};
+\node[c] (a) at (1.5,1) {}; \node[m] (cc) at (3,1) {};
+\node[c] (bd) at (-3,2) {}; \node[m] (de) at (-1.5,2) {}; \node[m] (ae) at (0,2) {};
+\node[c] (ad) at (1.5,2) {}; \node[c] (ac) at (3,2) {};
+\node[c] (abd) at (-2,3) {}; \node[m] (ade) at (0,3) {}; \node[c] (acd) at (2,3) {};
+\node[m] (abde) at (-1,4) {}; \node[m] (acde) at (1,4) {};
+\node[m] (X) at (0,5) {};
+\foreach \u/\v in {0/b,0/d,0/e,0/a,0/cc,b/bd,d/de,e/de,e/ae,a/ae,cc/ac,ae/ade,de/ade,abd/abde,ade/abde,ade/acde,acd/acde,abde/X,acde/X}
+  \draw[e] (\u) -- (\v);
+\foreach \u/\v in {d/bd,d/ad,a/ad,a/ac,bd/abd,ad/abd,ad/acd,ac/acd}
+  \draw[ec] (\u) -- (\v);
+\draw[e] (ad) -- (ade);
+\foreach \n/\t/\p in {0/{\varnothing}/below,b/b/left,d/d/left,e/e/left,a/a/right,cc/c/right,bd/bd/left,de/de/left,ae/ae/left,ad/ad/right,ac/ac/right,abd/abd/left,ade/ade/left,acd/acd/right,abde/abde/left,acde/acde/right,X/abcde/above}
+  \node[lab,\p=3.5pt] at (\n) {$\t$};
+\node[m] at (0) {};\node[m] at (b) {};\node[c] at (d) {};\node[m] at (e) {};\node[c] at (a) {};\node[m] at (cc) {};
+\node[c] at (bd) {};\node[m] at (de) {};\node[m] at (ae) {};\node[c] at (ad) {};\node[c] at (ac) {};
+\node[c] at (abd) {};\node[m] at (ade) {};\node[c] at (acd) {};\node[m] at (abde) {};\node[m] at (acde) {};\node[m] at (X) {};
+\end{tikzpicture}
+\end{document}

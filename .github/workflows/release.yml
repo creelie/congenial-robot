@@ -1,0 +1,71 @@
+name: release
+
+# Run by hand from the Actions tab (or the API) after the PR is merged. It builds the Lean proof and
+# runs the axiom audit again, then publishes a GitHub release with the paper files in dist/ and the
+# notes in .github/RELEASE_NOTES.md. Zenodo archives the release and mints a DOI if the repository
+# is switched on at https://zenodo.org/account/settings/github/.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, e.g. v1.0.0"
+        required: true
+        default: "v1.0.0"
+      target:
+        description: "Branch or commit to tag"
+        required: true
+        default: "main"
+      title:
+        description: "Release title"
+        required: true
+        default: "Maximal sublattices of convex geometries: four counterexamples"
+
+permissions:
+  contents: write
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target }}
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build and audit
+        working-directory: lean
+        run: |
+          lake exe cache get
+          lake build
+          lake env lean Check.lean 2>&1 | tee ../lean-check.txt
+          python3 ../scripts/audit_axioms.py ../lean-check.txt
+
+  release:
+    needs: lean
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target }}
+      - name: Check the paper files
+        run: |
+          for f in dist/maximal-sublattices-cg.pdf dist/maximal-sublattices-cg-tex.zip \
+                   dist/maximal-sublattices-cg-arxiv.tar.gz; do
+            test -s "$f" || { echo "missing $f"; exit 1; }
+          done
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          TARGET: ${{ inputs.target }}
+          TITLE: ${{ inputs.title }}
+        run: |
+          gh release create "$TAG" dist/maximal-sublattices-cg* \
+            --target "$TARGET" \
+            --title "$TAG: $TITLE" \
+            --notes-file .github/RELEASE_NOTES.md
