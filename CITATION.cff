@@ -9,6 +9,14 @@ authors:
     affiliation: "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India"
     email: d.bhattacharjee@erl-forschung.de
 version: 1.0.0
+doi: "10.5281/zenodo.23343145"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23343145"
+    description: "Version 1.0.0"
+  - type: doi
+    value: "10.5281/zenodo.23343144"
+    description: "All versions"
 date-released: 2026-10-13
 license: MIT
 repository-code: "https://github.com/creelie/congenial-robot"

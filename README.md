@@ -1,5 +1,9 @@
 # Maximal sublattices of convex geometries: four counterexamples
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23343145.svg)](https://doi.org/10.5281/zenodo.23343145)
+
+Release v1.0.0: [doi:10.5281/zenodo.23343145](https://doi.org/10.5281/zenodo.23343145) (all versions: [doi:10.5281/zenodo.23343144](https://doi.org/10.5281/zenodo.23343144)).
+
 Adaricheva, Mata, Silberger and Zamojska-Dzienio, *Conjecture on maximal sublattices of finite
 semidistributive lattices and beyond*, Discrete Math. Theor. Comput. Sci. 28:2 (2026),
 [doi:10.46298/dmtcs.16374](https://doi.org/10.46298/dmtcs.16374)
